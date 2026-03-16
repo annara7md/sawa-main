@@ -1,0 +1,9 @@
+[submodule "sawa-dashboard"]
+	path = sawa-dashboard
+	url = git@github.com:annara7md/sawa-dashboard.git
+[submodule "sawa-backend"]
+	path = sawa-backend
+	url = git@github.com:annara7md/sawa-backend.git
+[submodule "sawa-app"]
+	path = sawa-app
+	url = git@github.com:annara7md/sawa-app.git
