@@ -1,0 +1,977 @@
+{
+  "workspace": "sawa-main",
+  "description": "Workspace-level memory index for sawa-dashboard and sawa-backend.",
+  "last_updated": "2026-03-14",
+  "documents": [
+    {
+      "id": "root-manifest",
+      "path": "memory/manifest.json",
+      "scope": "shared",
+      "kind": "index",
+      "summary": "Machine-readable index of all memory documents.",
+      "tags": ["workspace", "manifest", "index"],
+      "priority": "start",
+      "source_paths": [
+        "docs/superpowers/specs/2026-03-14-sawa-workspace-memory-design.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "root-readme",
+      "path": "memory/README.md",
+      "scope": "shared",
+      "kind": "entrypoint",
+      "summary": "Primary entry point and reading order for the memory system.",
+      "tags": ["workspace", "entrypoint", "navigation"],
+      "priority": "start",
+      "source_paths": [
+        "docs/superpowers/specs/2026-03-14-sawa-workspace-memory-design.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "root-update-playbook",
+      "path": "memory/update-playbook.md",
+      "scope": "shared",
+      "kind": "playbook",
+      "summary": "Rules and checklist for maintaining workspace memory.",
+      "tags": ["workspace", "maintenance", "process"],
+      "priority": "high",
+      "source_paths": [
+        "docs/superpowers/specs/2026-03-14-sawa-workspace-memory-design.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "root-change-log",
+      "path": "memory/change-log.md",
+      "scope": "shared",
+      "kind": "log",
+      "summary": "Audit log for changes made to the memory system.",
+      "tags": ["workspace", "history", "maintenance"],
+      "priority": "reference",
+      "source_paths": [
+        "docs/superpowers/specs/2026-03-14-sawa-workspace-memory-design.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "shared-overview",
+      "path": "memory/shared/overview.md",
+      "scope": "shared",
+      "kind": "overview",
+      "summary": "Workspace-wide overview of the two projects and how to choose the right scope.",
+      "tags": ["workspace", "overview", "scope"],
+      "priority": "high",
+      "source_paths": [
+        "sawa-dashboard/AGENTS.md",
+        "sawa-dashboard/README.md",
+        "sawa-backend/AGENTS.md",
+        "sawa-backend/README.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "shared-integration-map",
+      "path": "memory/shared/integration-map.md",
+      "scope": "shared",
+      "kind": "integration",
+      "summary": "Integration map between dashboard and backend, centered on GraphQL contracts.",
+      "tags": ["workspace", "integration", "graphql"],
+      "priority": "high",
+      "source_paths": [
+        "sawa-dashboard/docs/multi-schema.md",
+        "sawa-dashboard/package.json",
+        "sawa-backend/AGENTS.md",
+        "sawa-backend/pyproject.toml"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "shared-glossary",
+      "path": "memory/shared/glossary.md",
+      "scope": "shared",
+      "kind": "glossary",
+      "summary": "Common technical and product terms used across both projects.",
+      "tags": ["workspace", "glossary", "domain-language"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-dashboard/AGENTS.md",
+        "sawa-backend/AGENTS.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "shared-workflows",
+      "path": "memory/shared/workflows.md",
+      "scope": "shared",
+      "kind": "workflow",
+      "summary": "Cross-project task flows for schema changes, debugging, and scope discovery.",
+      "tags": ["workspace", "workflow", "integration"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-dashboard/docs/multi-schema.md",
+        "sawa-dashboard/docs/configuration.md",
+        "sawa-backend/AGENTS.md",
+        "sawa-backend/pyproject.toml"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "shared-dashboard-backend-connection-map",
+      "path": "memory/shared/dashboard-backend-connection-map.md",
+      "scope": "shared",
+      "kind": "integration",
+      "summary": "Visual connection map and endpoint catalog for how sawa-dashboard talks to sawa-backend.",
+      "tags": ["workspace", "integration", "graphql", "endpoints", "apps"],
+      "priority": "high",
+      "source_paths": [
+        "sawa-dashboard/src/config.ts",
+        "sawa-dashboard/src/graphql/client.ts",
+        "sawa-dashboard/src/files/mutations.ts",
+        "sawa-dashboard/src/extensions/views/InstallCustomExtension/hooks/useInstallApp.ts",
+        "sawa-dashboard/src/products/components/ProductDoctor/hooks/usePublicApiVerification.ts",
+        "sawa-dashboard/src/extensions/urls.ts",
+        "sawa-backend/saleor/urls.py",
+        "sawa-backend/saleor/graphql/views.py",
+        "sawa-backend/saleor/graphql/app/schema.py",
+        "sawa-backend/saleor/graphql/app/mutations/app_fetch_manifest.py",
+        "sawa-backend/saleor/graphql/app/mutations/app_install.py"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "dashboard-architecture",
+      "path": "memory/dashboard/architecture.md",
+      "scope": "dashboard",
+      "kind": "architecture",
+      "summary": "Frontend architecture, core layers, and developer navigation for sawa-dashboard.",
+      "tags": ["dashboard", "architecture", "frontend"],
+      "priority": "high",
+      "source_paths": [
+        "sawa-dashboard/AGENTS.md",
+        "sawa-dashboard/README.md",
+        "sawa-dashboard/package.json"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "dashboard-module-map",
+      "path": "memory/dashboard/module-map.md",
+      "scope": "dashboard",
+      "kind": "map",
+      "summary": "High-level map of important frontend feature directories and shared layers.",
+      "tags": ["dashboard", "modules", "frontend"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-dashboard/src/channels",
+        "sawa-dashboard/src/discounts",
+        "sawa-dashboard/src/orders",
+        "sawa-dashboard/src/products",
+        "sawa-dashboard/src/components",
+        "sawa-dashboard/src/graphql"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "dashboard-commands",
+      "path": "memory/dashboard/commands.md",
+      "scope": "dashboard",
+      "kind": "commands",
+      "summary": "Frontend install, run, test, lint, build, and schema commands.",
+      "tags": ["dashboard", "commands", "tooling"],
+      "priority": "high",
+      "source_paths": [
+        "sawa-dashboard/AGENTS.md",
+        "sawa-dashboard/package.json",
+        "sawa-dashboard/docs/configuration.md",
+        "sawa-dashboard/docs/running-tests.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "dashboard-patterns",
+      "path": "memory/dashboard/patterns.md",
+      "scope": "dashboard",
+      "kind": "patterns",
+      "summary": "Common frontend implementation patterns and expectations in sawa-dashboard.",
+      "tags": ["dashboard", "patterns", "react", "graphql"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-dashboard/AGENTS.md",
+        "sawa-dashboard/src/graphql",
+        "sawa-dashboard/src/components",
+        "sawa-dashboard/src/hooks"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "dashboard-risks",
+      "path": "memory/dashboard/risks.md",
+      "scope": "dashboard",
+      "kind": "risks",
+      "summary": "Frontend risk areas, generated files, and likely regression points.",
+      "tags": ["dashboard", "risks", "regressions"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-dashboard/AGENTS.md",
+        "sawa-dashboard/docs/multi-schema.md",
+        "sawa-dashboard/src/graphql"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "backend-architecture",
+      "path": "memory/backend/architecture.md",
+      "scope": "backend",
+      "kind": "architecture",
+      "summary": "Backend architecture, domain boundaries, and infrastructure layers.",
+      "tags": ["backend", "architecture", "django", "graphql"],
+      "priority": "high",
+      "source_paths": [
+        "sawa-backend/AGENTS.md",
+        "sawa-backend/README.md",
+        "sawa-backend/pyproject.toml"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "backend-domain-map",
+      "path": "memory/backend/domain-map.md",
+      "scope": "backend",
+      "kind": "map",
+      "summary": "High-level map of important domains under sawa-backend/saleor.",
+      "tags": ["backend", "domains", "django"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-backend/saleor/graphql",
+        "sawa-backend/saleor/account",
+        "sawa-backend/saleor/product",
+        "sawa-backend/saleor/checkout",
+        "sawa-backend/saleor/order",
+        "sawa-backend/saleor/payment"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "backend-commands",
+      "path": "memory/backend/commands.md",
+      "scope": "backend",
+      "kind": "commands",
+      "summary": "Backend install, run, test, lint, worker, and schema commands.",
+      "tags": ["backend", "commands", "tooling"],
+      "priority": "high",
+      "source_paths": [
+        "sawa-backend/AGENTS.md",
+        "sawa-backend/pyproject.toml"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "backend-patterns",
+      "path": "memory/backend/patterns.md",
+      "scope": "backend",
+      "kind": "patterns",
+      "summary": "Backend concurrency, transaction, validation, and resolver patterns.",
+      "tags": ["backend", "patterns", "transactions", "dataloader"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-backend/AGENTS.md",
+        "sawa-backend/saleor/graphql",
+        "sawa-backend/saleor/core"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "backend-risks",
+      "path": "memory/backend/risks.md",
+      "scope": "backend",
+      "kind": "risks",
+      "summary": "Backend data integrity, migration, and performance risks.",
+      "tags": ["backend", "risks", "transactions", "migrations"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-backend/AGENTS.md",
+        "sawa-backend/saleor/order",
+        "sawa-backend/saleor/checkout",
+        "sawa-backend/saleor/graphql"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "backend-integration-touchpoints",
+      "path": "memory/backend/integration-touchpoints.md",
+      "scope": "backend",
+      "kind": "integration",
+      "summary": "Backend files and domains most likely to affect dashboard integration.",
+      "tags": ["backend", "integration", "graphql", "schema"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-backend/saleor/graphql",
+        "sawa-backend/pyproject.toml",
+        "sawa-dashboard/docs/multi-schema.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-overview",
+      "path": "memory/agent-skills/overview.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Overview of the Agent Skills model, portability, and progressive disclosure.",
+      "tags": ["agent-skills", "analysis", "overview"],
+      "priority": "high",
+      "source_paths": [
+        "https://agentskills.io/home",
+        "https://agentskills.io/what-are-skills"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-specification",
+      "path": "memory/agent-skills/specification.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Analysis of the current Agent Skills specification and structural constraints.",
+      "tags": ["agent-skills", "analysis", "specification"],
+      "priority": "high",
+      "source_paths": [
+        "https://agentskills.io/specification"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-best-practices",
+      "path": "memory/agent-skills/best-practices.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Analysis of current Agent Skills authoring best practices.",
+      "tags": ["agent-skills", "analysis", "best-practices"],
+      "priority": "high",
+      "source_paths": [
+        "https://agentskills.io/skill-creation/best-practices"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-optimizing-descriptions",
+      "path": "memory/agent-skills/optimizing-descriptions.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Analysis of description-writing guidance for reliable skill triggering.",
+      "tags": ["agent-skills", "analysis", "descriptions"],
+      "priority": "high",
+      "source_paths": [
+        "https://agentskills.io/skill-creation/optimizing-descriptions"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-evaluating-skills",
+      "path": "memory/agent-skills/evaluating-skills.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Analysis of current Agent Skills evaluation guidance.",
+      "tags": ["agent-skills", "analysis", "evaluation"],
+      "priority": "medium",
+      "source_paths": [
+        "https://agentskills.io/skill-creation/evaluating-skills"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-using-scripts",
+      "path": "memory/agent-skills/using-scripts.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Analysis of current Agent Skills script guidance.",
+      "tags": ["agent-skills", "analysis", "scripts"],
+      "priority": "medium",
+      "source_paths": [
+        "https://agentskills.io/skill-creation/using-scripts"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-client-implementation",
+      "path": "memory/agent-skills/client-implementation.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Analysis of current client integration guidance for Agent Skills.",
+      "tags": ["agent-skills", "analysis", "client-implementation"],
+      "priority": "medium",
+      "source_paths": [
+        "https://agentskills.io/client-implementation/adding-skills-support"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-repository-analysis",
+      "path": "memory/agent-skills/repository-analysis.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Analysis of the current agentskills/agentskills repository structure.",
+      "tags": ["agent-skills", "analysis", "repository"],
+      "priority": "medium",
+      "source_paths": [
+        "https://github.com/agentskills/agentskills",
+        "https://raw.githubusercontent.com/agentskills/agentskills/main/README.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-local-inventory",
+      "path": "memory/agent-skills/local-skill-inventory.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Inventory and comparison of existing local skills and agent guidance.",
+      "tags": ["agent-skills", "analysis", "local-skills"],
+      "priority": "high",
+      "source_paths": [
+        "sawa-backend/skills/pytest-runner/SKILL.md",
+        "sawa-backend/skills/saleor-django-migration/SKILL.md",
+        "sawa-dashboard/.claude/skills/saleor-dashboard-styles/SKILL.md",
+        "sawa-dashboard/.claude/plugins/dashboard-playwright/skills/analyze-failures/SKILL.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-dashboard-evidence",
+      "path": "memory/agent-skills/dashboard-skill-evidence.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Confirmed local evidence for the dashboard-development skill.",
+      "tags": ["agent-skills", "analysis", "dashboard"],
+      "priority": "high",
+      "source_paths": [
+        "memory/dashboard/architecture.md",
+        "memory/dashboard/module-map.md",
+        "sawa-dashboard/AGENTS.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-backend-evidence",
+      "path": "memory/agent-skills/backend-skill-evidence.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Confirmed local evidence for the backend-development skill.",
+      "tags": ["agent-skills", "analysis", "backend"],
+      "priority": "high",
+      "source_paths": [
+        "memory/backend/architecture.md",
+        "memory/backend/domain-map.md",
+        "sawa-backend/AGENTS.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-extensions-evidence",
+      "path": "memory/agent-skills/extensions-skill-evidence.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Confirmed local evidence and gaps for extension-related skill behavior.",
+      "tags": ["agent-skills", "analysis", "extensions"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-dashboard/src/extensions",
+        "sawa-backend/saleor/graphql/app",
+        "sawa-backend/saleor/app"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-apps-evidence",
+      "path": "memory/agent-skills/apps-skill-evidence.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Confirmed local evidence and gaps for app-related skill behavior.",
+      "tags": ["agent-skills", "analysis", "apps"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-backend/saleor/app",
+        "sawa-backend/saleor/graphql/app",
+        "sawa-dashboard/src/extensions"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-extensions-surface-map",
+      "path": "memory/agent-skills/extensions-surface-map.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Detailed map of confirmed extension-related dashboard and backend surfaces.",
+      "tags": ["agent-skills", "analysis", "extensions", "map"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-dashboard/src/extensions/views",
+        "sawa-dashboard/src/extensions/components",
+        "sawa-dashboard/src/extensions/domain",
+        "sawa-dashboard/src/extensions/urls.ts",
+        "sawa-backend/saleor/app",
+        "sawa-backend/saleor/graphql/app"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-apps-operation-map",
+      "path": "memory/agent-skills/apps-operation-map.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Detailed map of confirmed app lifecycle operations and dashboard touchpoints.",
+      "tags": ["agent-skills", "analysis", "apps", "operations"],
+      "priority": "medium",
+      "source_paths": [
+        "sawa-backend/saleor/app",
+        "sawa-backend/saleor/graphql/app",
+        "sawa-dashboard/src/extensions/views",
+        "sawa-dashboard/src/extensions/urls.ts"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "agent-skills-bankr-signals-package-analysis",
+      "path": "memory/agent-skills/bankr-signals-package-analysis.md",
+      "scope": "shared",
+      "kind": "analysis",
+      "summary": "Analysis of the local multi-file skill package pattern implemented by bankr-signals.",
+      "tags": ["agent-skills", "analysis", "local-pattern", "skills"],
+      "priority": "medium",
+      "source_paths": [
+        "skills/bankr-signals",
+        "skills/shared-agent-skill-foundation",
+        "skills/dashboard-development",
+        "skills/backend-development",
+        "skills/extensions-development",
+        "skills/apps-development",
+        "/Users/fahmifareed/.codex/skills/superpowers/writing-skills/SKILL.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-foundation-description-rules",
+      "path": "skills/shared-agent-skill-foundation/references/description-rules.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Local trigger-writing rules for root skill descriptions.",
+      "tags": ["skills", "foundation", "references", "description"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/optimizing-descriptions.md",
+        "memory/agent-skills/best-practices.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-foundation-source-priority",
+      "path": "skills/shared-agent-skill-foundation/references/source-priority.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Source-order rules for the root skills program.",
+      "tags": ["skills", "foundation", "references", "sources"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/best-practices.md",
+        "memory/agent-skills/local-skill-inventory.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-foundation-structure",
+      "path": "skills/shared-agent-skill-foundation/references/skill-structure.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Package-structure rules for root skills and their support files.",
+      "tags": ["skills", "foundation", "references", "structure"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/specification.md",
+        "memory/agent-skills/repository-analysis.md",
+        "memory/agent-skills/bankr-signals-package-analysis.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-foundation-evaluation-notes",
+      "path": "skills/shared-agent-skill-foundation/references/evaluation-notes.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Evaluation notes for future root-skill validation work.",
+      "tags": ["skills", "foundation", "references", "evaluation"],
+      "priority": "reference",
+      "source_paths": [
+        "memory/agent-skills/evaluating-skills.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-foundation-script-guidelines",
+      "path": "skills/shared-agent-skill-foundation/references/script-guidelines.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Script rules for root skills derived from Agent Skills guidance.",
+      "tags": ["skills", "foundation", "references", "scripts"],
+      "priority": "reference",
+      "source_paths": [
+        "memory/agent-skills/using-scripts.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-foundation-package-pattern",
+      "path": "skills/shared-agent-skill-foundation/references/package-pattern.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Local package-pattern notes derived from the bankr-signals skill package.",
+      "tags": ["skills", "foundation", "references", "package"],
+      "priority": "reference",
+      "source_paths": [
+        "memory/agent-skills/bankr-signals-package-analysis.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-foundation",
+      "path": "skills/shared-agent-skill-foundation/SKILL.md",
+      "scope": "shared",
+      "kind": "skill",
+      "summary": "Shared contract skill for authoring and maintaining the local root skills program.",
+      "tags": ["skills", "foundation", "shared"],
+      "priority": "high",
+      "source_paths": [
+        "memory/agent-skills/*.md",
+        "skills/shared-agent-skill-foundation/references/*.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-dashboard-reading-order",
+      "path": "skills/dashboard-development/references/reading-order.md",
+      "scope": "dashboard",
+      "kind": "reference",
+      "summary": "Reading order and routing rules for dashboard work.",
+      "tags": ["skills", "dashboard", "references", "navigation"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/dashboard-skill-evidence.md",
+        "memory/dashboard/architecture.md",
+        "memory/dashboard/module-map.md",
+        "memory/agent-skills/extensions-surface-map.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-dashboard-boundaries",
+      "path": "skills/dashboard-development/references/boundaries.md",
+      "scope": "dashboard",
+      "kind": "reference",
+      "summary": "Scope boundaries for the dashboard-development skill.",
+      "tags": ["skills", "dashboard", "references", "scope"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/dashboard-skill-evidence.md",
+        "memory/agent-skills/extensions-surface-map.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-dashboard-verification",
+      "path": "skills/dashboard-development/references/verification.md",
+      "scope": "dashboard",
+      "kind": "reference",
+      "summary": "Verification guidance for dashboard-specific changes.",
+      "tags": ["skills", "dashboard", "references", "verification"],
+      "priority": "reference",
+      "source_paths": [
+        "memory/dashboard/commands.md",
+        "memory/dashboard/risks.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-dashboard-development",
+      "path": "skills/dashboard-development/SKILL.md",
+      "scope": "dashboard",
+      "kind": "skill",
+      "summary": "Root skill for dashboard-specific development work in sawa-dashboard.",
+      "tags": ["skills", "dashboard", "development"],
+      "priority": "high",
+      "source_paths": [
+        "memory/agent-skills/dashboard-skill-evidence.md",
+        "memory/dashboard/*.md",
+        "skills/dashboard-development/references/*.md",
+        "sawa-dashboard/AGENTS.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-backend-reading-order",
+      "path": "skills/backend-development/references/reading-order.md",
+      "scope": "backend",
+      "kind": "reference",
+      "summary": "Reading order and routing rules for backend work.",
+      "tags": ["skills", "backend", "references", "navigation"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/backend-skill-evidence.md",
+        "memory/backend/architecture.md",
+        "memory/backend/domain-map.md",
+        "memory/backend/integration-touchpoints.md",
+        "memory/agent-skills/apps-operation-map.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-backend-boundaries",
+      "path": "skills/backend-development/references/boundaries.md",
+      "scope": "backend",
+      "kind": "reference",
+      "summary": "Scope boundaries for the backend-development skill.",
+      "tags": ["skills", "backend", "references", "scope"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/backend-skill-evidence.md",
+        "memory/agent-skills/apps-skill-evidence.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-backend-verification",
+      "path": "skills/backend-development/references/verification.md",
+      "scope": "backend",
+      "kind": "reference",
+      "summary": "Verification guidance for backend-specific changes.",
+      "tags": ["skills", "backend", "references", "verification"],
+      "priority": "reference",
+      "source_paths": [
+        "memory/backend/commands.md",
+        "memory/backend/patterns.md",
+        "memory/backend/risks.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-backend-development",
+      "path": "skills/backend-development/SKILL.md",
+      "scope": "backend",
+      "kind": "skill",
+      "summary": "Root skill for backend-specific development work in sawa-backend.",
+      "tags": ["skills", "backend", "development"],
+      "priority": "high",
+      "source_paths": [
+        "memory/agent-skills/backend-skill-evidence.md",
+        "memory/backend/*.md",
+        "skills/backend-development/references/*.md",
+        "sawa-backend/AGENTS.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-extensions-surface-map",
+      "path": "skills/extensions-development/references/surface-map.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Surface map for confirmed extension-related dashboard and backend areas.",
+      "tags": ["skills", "extensions", "references", "map"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/extensions-surface-map.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-extensions-boundaries",
+      "path": "skills/extensions-development/references/boundaries.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Scope boundaries for the extensions-development skill.",
+      "tags": ["skills", "extensions", "references", "scope"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/extensions-skill-evidence.md",
+        "memory/agent-skills/extensions-surface-map.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-extensions-verification",
+      "path": "skills/extensions-development/references/verification.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Verification guidance for extension-related changes.",
+      "tags": ["skills", "extensions", "references", "verification"],
+      "priority": "reference",
+      "source_paths": [
+        "memory/agent-skills/extensions-skill-evidence.md",
+        "memory/agent-skills/extensions-surface-map.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-extensions-development",
+      "path": "skills/extensions-development/SKILL.md",
+      "scope": "shared",
+      "kind": "skill",
+      "summary": "Evidence-constrained root skill for extension-related work in the current workspace.",
+      "tags": ["skills", "extensions", "development"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/extensions-skill-evidence.md",
+        "skills/extensions-development/references/*.md",
+        "sawa-dashboard/src/extensions",
+        "sawa-backend/saleor/graphql/app"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-apps-operations-map",
+      "path": "skills/apps-development/references/operations-map.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Operations map for confirmed app lifecycle and dashboard touchpoints.",
+      "tags": ["skills", "apps", "references", "map"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/apps-operation-map.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-apps-boundaries",
+      "path": "skills/apps-development/references/boundaries.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Scope boundaries for the apps-development skill.",
+      "tags": ["skills", "apps", "references", "scope"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/apps-skill-evidence.md",
+        "memory/agent-skills/apps-operation-map.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-apps-verification",
+      "path": "skills/apps-development/references/verification.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Verification guidance for app lifecycle and app-management changes.",
+      "tags": ["skills", "apps", "references", "verification"],
+      "priority": "reference",
+      "source_paths": [
+        "memory/agent-skills/apps-skill-evidence.md",
+        "memory/agent-skills/apps-operation-map.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-apps-development",
+      "path": "skills/apps-development/SKILL.md",
+      "scope": "shared",
+      "kind": "skill",
+      "summary": "Evidence-constrained root skill for app-related work in the current workspace.",
+      "tags": ["skills", "apps", "development"],
+      "priority": "medium",
+      "source_paths": [
+        "memory/agent-skills/apps-skill-evidence.md",
+        "skills/apps-development/references/*.md",
+        "sawa-backend/saleor/app",
+        "sawa-backend/saleor/graphql/app"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-bankr-signals",
+      "path": "skills/bankr-signals/SKILL.md",
+      "scope": "shared",
+      "kind": "skill",
+      "summary": "Existing local multi-file skill package for Bankr Signals publishing and consumption workflows.",
+      "tags": ["skills", "bankr", "signals"],
+      "priority": "reference",
+      "source_paths": [
+        "skills/bankr-signals/HEARTBEAT.md",
+        "skills/bankr-signals/references/api-reference.md",
+        "skills/bankr-signals/scripts/publish-signal.sh"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-bankr-signals-heartbeat",
+      "path": "skills/bankr-signals/HEARTBEAT.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "Recurring operational loop for the bankr-signals skill package.",
+      "tags": ["skills", "bankr", "heartbeat"],
+      "priority": "reference",
+      "source_paths": [
+        "skills/bankr-signals/SKILL.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "skill-bankr-signals-api-reference",
+      "path": "skills/bankr-signals/references/api-reference.md",
+      "scope": "shared",
+      "kind": "reference",
+      "summary": "API reference for the bankr-signals skill package.",
+      "tags": ["skills", "bankr", "api", "reference"],
+      "priority": "reference",
+      "source_paths": [
+        "skills/bankr-signals/SKILL.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "template-module-memory",
+      "path": "memory/templates/module-memory-template.md",
+      "scope": "shared",
+      "kind": "template",
+      "summary": "Template for scoped module memory pages.",
+      "tags": ["template", "memory", "markdown"],
+      "priority": "reference",
+      "source_paths": [
+        "docs/superpowers/specs/2026-03-14-sawa-workspace-memory-design.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "template-decision-record",
+      "path": "memory/templates/decision-record-template.md",
+      "scope": "shared",
+      "kind": "template",
+      "summary": "Template for engineering decision records inside memory.",
+      "tags": ["template", "decision", "record"],
+      "priority": "reference",
+      "source_paths": [
+        "docs/superpowers/specs/2026-03-14-sawa-workspace-memory-design.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "template-flow",
+      "path": "memory/templates/flow-template.md",
+      "scope": "shared",
+      "kind": "template",
+      "summary": "Template for workflow and process documents.",
+      "tags": ["template", "workflow", "process"],
+      "priority": "reference",
+      "source_paths": [
+        "docs/superpowers/specs/2026-03-14-sawa-workspace-memory-design.md"
+      ],
+      "last_updated": "2026-03-14"
+    },
+    {
+      "id": "template-risk",
+      "path": "memory/templates/risk-template.md",
+      "scope": "shared",
+      "kind": "template",
+      "summary": "Template for risk-oriented memory documents.",
+      "tags": ["template", "risk", "operations"],
+      "priority": "reference",
+      "source_paths": [
+        "docs/superpowers/specs/2026-03-14-sawa-workspace-memory-design.md"
+      ],
+      "last_updated": "2026-03-14"
+    }
+  ]
+}
